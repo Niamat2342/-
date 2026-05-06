@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>د ډاټا مرکزي سیسټم</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; background-color: #f4f4f9; padding: 20px; text-align: center; }
+        .container { max-width: 500px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin: auto; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { padding: 12px 20px; cursor: pointer; border: none; border-radius: 5px; width: 95%; background-color: #28a745; color: white; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>د معلوماتو د ثبت فورمه</h2>
+    <input type="number" id="teamNo" placeholder="د ټیم نمبر">
+    <input type="text" id="childName" placeholder="د ماشوم نوم">
+    <input type="text" id="fatherName" placeholder="د پلار نوم">
+    <input type="text" id="job" placeholder="وظیفه">
+    <input type="number" id="siteNo" placeholder="د سایټ نمبر">
+    <input type="text" id="siteName" placeholder="د سایټ نوم">
+    <button id="submitBtn" onclick="sendData()">معلومات لیږل (Submit)</button>
+    <p id="status"></p>
+</div>
+
+<script>
+    function sendData() {
+        const url = "دلته_خپل_د_ګوګل_ایپ_یو_ار_ایل_کاپي_کړئ"; 
+        const btn = document.getElementById('submitBtn');
+        const status = document.getElementById('status');
+
+        const row = {
+            teamNo: document.getElementById('teamNo').value,
+            childName: document.getElementById('childName').value,
+            fatherName: document.getElementById('fatherName').value,
+            job: document.getElementById('job').value,
+            siteNo: document.getElementById('siteNo').value,
+            siteName: document.getElementById('siteName').value
+        };
+
+        if(!row.childName) { alert("نوم ضرور دی!"); return; }
+
+        btn.disabled = true;
+        status.innerText = "د لیږلو په حال کې...";
+
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify(row)
+        }).then(res => {
+            alert("ډاټا په بریالیتوب سره اډمین ته ورسیده!");
+            document.querySelectorAll('input').forEach(i => i.value = "");
+            status.innerText = "";
+        }).catch(err => {
+            console.log(err);
+            alert("خطا وشوه، بیا هڅه وکړئ.");
+        }).finally(() => btn.disabled = false);
+    }
+</script>
+
+</body>
+</html>
