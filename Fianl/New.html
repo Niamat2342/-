@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newborn Children Data Tracking Sheet</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      background: white;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input,
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Newborn Children Data Tracking Sheet</h1>
+
+    <form id="trackingForm">
+
+      <div class="form-group">
+        <label>Province</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Pcode</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>District</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Dcode</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Campaigns Round</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Cluster#</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Team #</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Campaign Day (1,2,3,4)</label>
+        <select required>
+          <option value="">Select Day</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Village Name</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Site Name</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Name of the Child</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Father Name</label>
+        <input type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label>Age by Days</label>
+        <input type="number" required>
+      </div>
+
+      <div class="form-group">
+        <label>Age by Months</label>
+        <input type="number" required>
+      </div>
+
+      <div class="form-group">
+        <label>Vaccinated Status (Yes/No)</label>
+        <select required>
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('trackingForm');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      message.innerHTML = 'Data Submitted Successfully!';
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
